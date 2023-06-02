@@ -21,4 +21,11 @@ public class MyArrayListTests {
         assertThat(list.size()).isEqualTo(2);
 
     }
+    @Test
+    @DisplayName("get(1)")
+    void t3(){
+        MyArrayList<String> list = new MyArrayList<>();
+        assertThat(list.get(1)).isEqualTo("a");
+
+    }
 }
