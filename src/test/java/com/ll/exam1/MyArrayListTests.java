@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.AssertEquals.assertEquals;
 public class MyArrayListTests {
     @Test
     @DisplayName("size()")
@@ -13,5 +12,13 @@ public class MyArrayListTests {
 //        assertEquals(0,list.size());
         assertThat(list.size()).isEqualTo(0);
     }
+    @Test
+    @DisplayName("add()")
+    void t2(){
+        MyArrayList<String> list = new MyArrayList<>();
+        list.add("a");
+        list.add("b");
+        assertThat(list.size()).isEqualTo(2);
 
+    }
 }
