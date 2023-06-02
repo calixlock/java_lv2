@@ -21,7 +21,7 @@ public class MyArrayList<T> {
 //        return data.length;
     }
 
-    public boolean add(Object e) {
+    public boolean add(T e) {
         makeNewDataIfNotEnough();
         data[size] = e;
         size++;

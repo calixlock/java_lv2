@@ -96,7 +96,7 @@ public class MyArrayListTests {
     @Test
     @DisplayName("index of")
     void t8(){
-        MyArrayList<String> list = new MyArrayList<>(100);
+        MyArrayList<Boolean> list = new MyArrayList<>(100);
         list.add(true);
         list.add(false);
         assertThat(list.get(1)).isEqualTo(true);
