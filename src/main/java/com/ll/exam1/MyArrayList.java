@@ -1,6 +1,7 @@
 package com.ll.exam1;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 public class MyArrayList<T> {
     public boolean debug = false;
@@ -58,5 +59,11 @@ public class MyArrayList<T> {
             if (e.equals(data[i])) return i;
         }
         return -1;
-    }
+//        return IntStream.range(0,size)
+//                .mapToObj(idx->new Object[]{idx, data[idx]})
+//                .filter(arr-> e.equals(arr[1]))
+//                .mapToInt(arr ->(int)arr[0])
+//                .findFirst()
+//                .orElse(-1);
+//    }
 }
