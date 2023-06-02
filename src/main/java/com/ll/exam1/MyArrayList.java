@@ -7,13 +7,13 @@ public class MyArrayList<T> {
     public boolean debug = false;
     private int size = 0;
 //    private String[] data = new String[0];
-    private String[] data;
+    private Object[] data;
 
     public MyArrayList() {
         this(0);
     }
     public MyArrayList(int InitialDataLen) {
-        data = new String[InitialDataLen];
+        data = new Object[InitialDataLen];
     }
 
     public int size() {
@@ -21,7 +21,7 @@ public class MyArrayList<T> {
 //        return data.length;
     }
 
-    public boolean add(String e) {
+    public boolean add(Object e) {
         makeNewDataIfNotEnough();
         data[size] = e;
         size++;
@@ -35,7 +35,7 @@ public class MyArrayList<T> {
     }
 
     private void makeNewData() {
-        String[] newData = new String[data.length +1];
+        Object[] newData = new String[data.length +1];
         for (int i = 0; i < data.length; i++) {
             newData[i] = data[i];
         }
@@ -50,7 +50,7 @@ public class MyArrayList<T> {
         return size == data.length;
     }
 
-    public String get(int idx) {
+    public Object get(int idx) {
         return data[idx-1];
     }
 
@@ -65,5 +65,5 @@ public class MyArrayList<T> {
 //                .mapToInt(arr ->(int)arr[0])
 //                .findFirst()
 //                .orElse(-1);
-//    }
+    }
 }

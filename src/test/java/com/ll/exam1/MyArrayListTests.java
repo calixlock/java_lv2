@@ -2,11 +2,14 @@ package com.ll.exam1;
 
 import com.ll.TestUt;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+@TestMethodOrder(MethodOrderer.MethodName.class)
 public class MyArrayListTests {
     @Test
     @DisplayName("size()")
@@ -46,7 +49,7 @@ public class MyArrayListTests {
     @DisplayName("data len 증가 확인")
     void t4() {
         MyArrayList<String> list = new MyArrayList<>();
-        int dataLen1 = ((String[]) TestUt.getFieldValue(list, "data", null)).length;
+        int dataLen1 = ((Object[]) TestUt.getFieldValue(list, "data", null)).length;
 
 //        list.add("a");
 //        list.add("b");
@@ -56,7 +59,7 @@ public class MyArrayListTests {
         assertThat(list.get(1)).isEqualTo("element 1");
 
 //        assertThat(list.size()).isEqualTo(3);
-        int dataLen2 = ((String[]) TestUt.getFieldValue(list, "data", null)).length;
+        int dataLen2 = ((Object[]) TestUt.getFieldValue(list, "data", null)).length;
         assertThat(dataLen2).isGreaterThan(dataLen1);
     }
     @Test
@@ -65,7 +68,7 @@ public class MyArrayListTests {
         MyArrayList<String> list = new MyArrayList<>(100);
 
         //        assertThat(list.size()).isEqualTo(100);
-        int dataLen = ((String[]) TestUt.getFieldValue(list,"data",null)).length;
+        int dataLen = ((Object[]) TestUt.getFieldValue(list,"data",null)).length;
         assertThat(dataLen).isEqualTo(100);
     }
     @Test
@@ -77,7 +80,7 @@ public class MyArrayListTests {
         //        assertThat(list.size()).isEqualTo(100);
         IntStream.rangeClosed(1,110)
                 .forEach(idx -> list.add("element %d".formatted(idx)));
-        int dataLen = ((String[]) TestUt.getFieldValue(list,"data",null)).length;
+        int dataLen = ((Object[]) TestUt.getFieldValue(list,"data",null)).length;
         assertThat(dataLen).isEqualTo(110);
     }
     @Test
@@ -89,5 +92,15 @@ public class MyArrayListTests {
         assertThat(list.indexOf("element 2")).isEqualTo(1);
         assertThat(list.indexOf("element 4")).isEqualTo(3);
         assertThat(list.indexOf("element 9")).isEqualTo(8);
+    }
+    @Test
+    @DisplayName("index of")
+    void t8(){
+        MyArrayList<String> list = new MyArrayList<>(100);
+        list.add(true);
+        list.add(false);
+        assertThat(list.get(1)).isEqualTo(true);
+
+
     }
 }
