@@ -1,8 +1,19 @@
 package com.ll.exam1;
 
+import java.util.ArrayList;
+
 public class MyArrayList<T> {
     private int size = 0;
-    private String[] data = new String[0];
+//    private String[] data = new String[0];
+    private String[] data;
+
+    public MyArrayList() {
+        this(0);
+    }
+    public MyArrayList(int InitialDataLen) {
+        data = new String[InitialDataLen];
+    }
+
     public int size() {
         return data.length;
     }
