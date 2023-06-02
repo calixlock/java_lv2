@@ -2,17 +2,37 @@ package com.ll.exam1;
 
 public class MyArrayList<T> {
     private int size = 0;
-
+    private String[] data = new String[2];
     public int size() {
         return size;
     }
 
-    public boolean add(T element) {
+    public boolean add(String e) {
+        makeNewDataIfNotEnough();
+        data[size] = e;
         size++;
         return true;
     }
 
-    public T get(int element) {
-        return (T) "a";
+    private void makeNewDataIfNotEnough() {
+        if (isNotEnough()){
+            makeNewData();
+        }
+    }
+
+    private void makeNewData() {
+        String[] newData = new String[data.length + 1];
+        for (int i = 0; i < data.length; i++) {
+            newData[i] = data[i];
+        }
+        data = newData; // 기존 배열 최신화
+    }
+
+    private boolean isNotEnough() {
+        return size == data.length;
+    }
+
+    public String get(int idx) {
+        return data[idx-1];
     }
 }

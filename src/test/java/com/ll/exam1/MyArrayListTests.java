@@ -18,13 +18,17 @@ public class MyArrayListTests {
         MyArrayList<String> list = new MyArrayList<>();
         list.add("a");
         list.add("b");
-        assertThat(list.size()).isEqualTo(2);
+        list.add("c");
+        assertThat(list.size()).isEqualTo(3);
 
     }
     @Test
     @DisplayName("get(1)")
     void t3(){
         MyArrayList<String> list = new MyArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
         assertThat(list.get(1)).isEqualTo("a");
 
     }
