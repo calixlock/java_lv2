@@ -4,6 +4,8 @@ import com.ll.TestUt;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.IntStream;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class MyArrayListTests {
     @Test
@@ -46,10 +48,12 @@ public class MyArrayListTests {
         MyArrayList<String> list = new MyArrayList<>();
         int dataLen1 = ((String[]) TestUt.getFieldValue(list, "data", null)).length;
 
-        list.add("a");
-        list.add("b");
-        list.add("c");
-        assertThat(list.get(1)).isEqualTo("a");
+//        list.add("a");
+//        list.add("b");
+//        list.add("c");
+        IntStream.rangeClosed(1,11)
+                        .forEach(idx -> list.add("element %d".formatted(idx)));
+        assertThat(list.get(1)).isEqualTo("element 1");
 
 //        assertThat(list.size()).isEqualTo(3);
         int dataLen2 = ((String[]) TestUt.getFieldValue(list, "data", null)).length;
@@ -63,5 +67,27 @@ public class MyArrayListTests {
         //        assertThat(list.size()).isEqualTo(100);
         int dataLen = ((String[]) TestUt.getFieldValue(list,"data",null)).length;
         assertThat(dataLen).isEqualTo(100);
+    }
+    @Test
+    @DisplayName("dataLen Debug")
+    void t6() {
+
+        MyArrayList<String> list = new MyArrayList<>(100);
+//        list.debug = true;
+        //        assertThat(list.size()).isEqualTo(100);
+        IntStream.rangeClosed(1,110)
+                .forEach(idx -> list.add("element %d".formatted(idx)));
+        int dataLen = ((String[]) TestUt.getFieldValue(list,"data",null)).length;
+        assertThat(dataLen).isEqualTo(110);
+    }
+    @Test
+    @DisplayName("index of")
+    void t7(){
+    MyArrayList<String> list = new MyArrayList<>(100);
+    IntStream.rangeClosed(1,10)
+            .forEach(idx -> list.add("element %d".formatted(idx)));
+        assertThat(list.indexOf("element 2")).isEqualTo(1);
+        assertThat(list.indexOf("element 4")).isEqualTo(3);
+        assertThat(list.indexOf("element 9")).isEqualTo(8);
     }
 }
