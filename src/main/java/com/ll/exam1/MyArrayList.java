@@ -2,9 +2,9 @@ package com.ll.exam1;
 
 public class MyArrayList<T> {
     private int size = 0;
-    private String[] data = new String[2];
+    private String[] data = new String[0];
     public int size() {
-        return size;
+        return data.length;
     }
 
     public boolean add(String e) {
